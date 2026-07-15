@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Critério da Luz — Como Deus Julga Segundo a Oportunidade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2340;
+    --ink-2:#232C50;
+    --parchment:#EFE6D3;
+    --parchment-2:#E7DCC4;
+    --burgundy:#7A2E2E;
+    --gold:#B08D57;
+    --gold-soft:#D8C297;
+    --ivory:#F7F2E7;
+    --charcoal:#2B2620;
+    --line: rgba(43,38,32,0.18);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--parchment);
+    color:var(--charcoal);
+    font-family:'Crimson Pro', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--gold-soft); color:var(--ink);}
+
+  h1,h2,h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
+    letter-spacing:0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--burgundy);
+  }
+  .verse{
+    font-family:'Crimson Pro', serif;
+    font-style:italic;
+    color:var(--ink);
+    border-left:2px solid var(--gold);
+    padding-left:1rem;
+    margin:0.9rem 0;
+    line-height:1.55;
+  }
+  .ref{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.05em;
+    color:var(--burgundy);
+    display:block;
+    margin-top:0.35rem;
+    font-style:normal;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:92vh;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(176,141,87,0.20), transparent 60%),
+      linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+    color:var(--ivory);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:8vh 7vw 6vh;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    right:-10%;
+    top:50%;
+    transform:translateY(-50%);
+    width:520px;
+    height:520px;
+    border:1px solid rgba(216,194,151,0.18);
+    border-radius:50%;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    right:-4%;
+    top:50%;
+    transform:translateY(-50%);
+    width:340px;
+    height:340px;
+    border:1px solid rgba(216,194,151,0.14);
+    border-radius:50%;
+  }
+  .hero .eyebrow{ color:var(--gold-soft); margin-bottom:1.4rem; }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.6rem);
+    line-height:1.05;
+    max-width:14ch;
+    color:var(--ivory);
+  }
+  .hero h1 em{ color:var(--gold-soft); font-style:italic; }
+  .hero p.lede{
+    font-size:clamp(1.05rem, 1.6vw, 1.3rem);
+    max-width:52ch;
+    margin-top:1.6rem;
+    color:rgba(247,242,231,0.82);
+    line-height:1.6;
+  }
+  .hero .scroll-cue{
+    margin-top:3.2rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.1em;
+    color:var(--gold-soft);
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+  }
+  .scroll-cue .arrow{ animation:nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge{ 0%,100%{transform:translateX(0);} 50%{transform:translateX(6px);} }
+
+  /* ---------- THESIS STATEMENT ---------- */
+  .thesis{
+    padding:5.5rem 7vw;
+    max-width:900px;
+  }
+  .thesis .eyebrow{margin-bottom:1rem;}
+  .thesis h2{
+    font-size:clamp(1.6rem,3vw,2.3rem);
+    line-height:1.35;
+    font-weight:500;
+    font-style:italic;
+  }
+  .thesis .verse{ margin-top:2.2rem; max-width:60ch; }
+
+  /* ---------- LIGHT GAUGE LEGEND ---------- */
+  .gauge-legend{
+    padding:0 7vw 3rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:1.6rem;
+    align-items:baseline;
+    border-top:1px solid var(--line);
+    padding-top:2rem;
+    margin:0 7vw;
+  }
+  .gauge-legend .stage{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    color:var(--charcoal);
+    opacity:0.65;
+    display:flex;
+    align-items:center;
+    gap:0.4rem;
+  }
+  .gauge-legend .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--burgundy);
+    display:inline-block;
+  }
+
+  /* ---------- HORIZONTAL STACK ---------- */
+  .stack-wrap{
+    position:relative;
+    padding:1rem 0 5rem;
+  }
+  .stack-nav{
+    display:flex;
+    gap:0;
+    overflow-x:auto;
+    padding:0 7vw 1.4rem;
+    scrollbar-width:none;
+  }
+  .stack-nav::-webkit-scrollbar{display:none;}
+  .stack-nav button{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    background:none;
+    border:none;
+    border-bottom:2px solid transparent;
+    color:var(--charcoal);
+    opacity:0.55;
+    padding:0.5rem 1rem 0.6rem 0;
+    margin-right:1.4rem;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:opacity 0.2s, border-color 0.2s;
+  }
+  .stack-nav button.active{
+    opacity:1;
+    border-bottom-color:var(--burgundy);
+    color:var(--burgundy);
+  }
+
+  .stack{
+    display:flex;
+    flex-direction:column;
+    gap:1.6rem;
+    padding:0 7vw 2rem;
+    max-width:720px;
+    margin:0 auto;
+  }
+
+  .card{
+    width:100%;
+    background:var(--ivory);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:2.4rem 2.2rem 2.1rem;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 1px 0 rgba(0,0,0,0.02);
+  }
+  .card .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--gold);
+    letter-spacing:0.08em;
+    margin-bottom:0.6rem;
+  }
+  .card h3{
+    font-size:1.55rem;
+    line-height:1.25;
+    margin-bottom:0.3rem;
+  }
+  .card .subtitle{
+    font-family:'Crimson Pro', serif;
+    font-style:italic;
+    color:var(--burgundy);
+    font-size:0.95rem;
+    margin-bottom:1.2rem;
+  }
+  .card p{
+    line-height:1.65;
+    font-size:0.98rem;
+    margin:0 0 0.9rem;
+  }
+  .card .verse{ font-size:0.94rem; }
+
+  /* light gauge */
+  .gauge{
+    margin:1.3rem 0 1.6rem;
+  }
+  .gauge-track{
+    position:relative;
+    height:3px;
+    background:var(--line);
+    border-radius:2px;
+    margin-bottom:0.5rem;
+  }
+  .gauge-fill{
+    position:absolute;
+    left:0; top:0; bottom:0;
+    background:linear-gradient(90deg, var(--gold-soft), var(--burgundy));
+    border-radius:2px;
+  }
+  .gauge-labels{
+    display:flex;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.02em;
+    color:var(--charcoal);
+    opacity:0.5;
+  }
+
+  .card .tension{
+    margin-top:auto;
+    padding-top:1.1rem;
+    border-top:1px dashed var(--line);
+    font-size:0.88rem;
+    color:var(--charcoal);
+    opacity:0.85;
+  }
+  .card .tension .eyebrow{ display:block; margin-bottom:0.4rem; opacity:0.9;}
+
+  .card.dark{
+    background:var(--ink);
+    color:var(--ivory);
+    border-color:var(--ink-2);
+  }
+  .card.dark h3, .card.dark .num{ color:var(--ivory); }
+  .card.dark .verse{ color:var(--gold-soft); border-left-color:var(--gold); }
+  .card.dark p{ color:rgba(247,242,231,0.85); }
+  .card.dark .tension{ border-top-color:rgba(247,242,231,0.2); color:rgba(247,242,231,0.75);}
+  .card.dark .subtitle{ color:var(--gold-soft); }
+
+  /* ---------- SINTESE ---------- */
+  .synthesis{
+    padding:5rem 7vw 7rem;
+    background:var(--parchment-2);
+    border-top:1px solid var(--line);
+  }
+  .synthesis-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+    max-width:1100px;
+  }
+  .synthesis h2{
+    font-size:clamp(1.7rem,3vw,2.4rem);
+    grid-column:1/-1;
+    max-width:26ch;
+    margin-bottom:0.5rem;
+  }
+  .synthesis .col p{ line-height:1.65; font-size:0.98rem;}
+  .synthesis .col .eyebrow{ margin-bottom:0.7rem; display:block;}
+
+  footer{
+    padding:3rem 7vw 4rem;
+    background:var(--ink);
+    color:rgba(247,242,231,0.55);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.03em;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:1rem;
+  }
+
+  @media (max-width:640px){
+    .synthesis-grid{ grid-template-columns:1fr; }
+    .card{ flex:0 0 86vw; padding:2rem 1.6rem; }
+    .thesis{ padding:4rem 6vw; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .scroll-cue .arrow{ animation:none; }
+    .stack{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <span class="eyebrow">Palavras de Fé · Estudo</span>
+  <h1>O critério da <em>luz</em> recebida</h1>
+  <p class="lede">Deus não julga a todos pela mesma régua. Ele julga cada pessoa segundo a oportunidade que teve de conhecê-lo — e segundo o que ela fez com essa oportunidade.</p>
+  <div class="scroll-cue">DESLIZE PARA OS NOVE CASOS <span class="arrow">→</span></div>
+</section>
+
+<section class="thesis">
+  <span class="eyebrow">A tese</span>
+  <h2>"A todo aquele a quem muito for dado, muito se lhe pedirá; e a quem muito confiaram, mais lhe pedirão."</h2>
+  <div class="verse">Porque todos os que sem lei pecaram, sem lei também perecerão; e todos os que sob a lei pecaram, pela lei serão julgados.
+    <span class="ref">ROMANOS 2:12 — ACF</span>
+  </div>
+</section>
+
+<div class="gauge-legend">
+  <span class="stage"><span class="dot"></span>NENHUMA LUZ</span>
+  <span class="stage"><span class="dot"></span>NATUREZA E CONSCIÊNCIA</span>
+  <span class="stage"><span class="dot"></span>BUSCA E RESPOSTA SINCERA</span>
+  <span class="stage"><span class="dot"></span>EVANGELHO OUVIDO</span>
+  <span class="stage"><span class="dot"></span>EVANGELHO PLENO E REJEITADO</span>
+</div>
+
+<div class="stack-wrap">
+  <div class="stack-nav" id="stackNav"></div>
+  <div class="stack" id="stack">
+
+    <article class="card" data-title="01 · Vizinho" data-gauge="100">
+      <span class="num">CASO 01</span>
+      <h3>O vizinho da igreja</h3>
+      <span class="subtitle">Oportunidade plena — o evangelho ouvido repetidas vezes</span>
+      <div class="gauge">
+        <div class="gauge-track"><div class="gauge-fill" style="width:100%"></div></div>
+        <div class="gauge-labels"><span>sem luz</span><span>luz plena</span></div>
+      </div>
+      <p>É o caso mais claro de todos. Quem ouve o evangelho semana após semana, tem acesso à Escritura e convive com cristãos, decide com pleno conhecimento de causa. A responsabilidade aqui é total.</p>
+      <div class="verse">A todo aquele a quem muito for dado, muito se lhe pedirá.
+        <span class="ref">LUCAS 12:48 — ACF</span>
+      </div>
+      <div class="tension">
+        <span class="eyebrow">Consenso</span>
+        Praticamente todas as tradições cristãs concordam neste extremo: aqui não há atenuante de ignorância.
+      </div>
+    </article>
+
+    <article class="card" data-title="02 · Princípio" data-gauge="60">
+      <span class="num">CASO 02</span>
+      <h3>O princípio da luz recebida</h3>
+      <span class="subtitle">O fundamento bíblico de toda a tese</span>
+      <div class="gauge">
+        <div class="gauge-track"><div class="gauge-fill" style="width:60%"></div></div>
+        <div class="gauge-labels"><span>sem luz</span><span>luz plena</span></div>
+      </div>
+      <p>O padrão de julgamento de Deus muda conforme o que cada pessoa tinha disponível para conhecer. Este não é um princípio implícito — é ensinado diretamente por Jesus.</p>
+      <div class="verse">Mas o que não soube, e fez coisas dignas de castigo, com poucos açoites será castigado.
+        <span class="ref">LUCAS 12:48 — ACF</span>
+      </div>
+      <div class="tension">
+        <span class="eyebrow">Apoio adicional</span>
+        Romanos 2:12-16 e Tiago 4:17 (ACF) reforçam: responsabilidade pressupõe capacidade de saber.
+      </div>
+    </article>
+
+    <article class="card" data-title="03 · Índio isolado" data-gauge="40">
+      <span class="num">CASO 03</span>
+      <h3>O índio que nunca ouviu</h3>
+      <span class="subtitle">Livramento de um animal, contemplação da natureza — e a resposta a isso</span>
+      <div class="gauge">
+        <div class="gauge-track"><div class="gauge-fill" style="width:40%"></div></div>
+        <div class="gauge-labels"><span>sem luz</span><span>luz plena</span></div>
+      </div>
+      <p>O que importa não é a oportunidade em si, mas o que a pessoa fez com ela. Alguém que, ao ser livrado de um perigo ou ao observar a ordem da criação, reconhece um deus bom, justo e forte — e se volta a ele — está respondendo à revelação geral com fé sincera.</p>
+      <div class="verse">Para que buscassem ao Senhor, se, porventura, tateando, o pudessem achar.
+        <span class="ref">ATOS 17:27 — ACF</span>
+      </div>
+      <div class="tension">
+        <span class="eyebrow">Precedente bíblico</span>
+        Melquisedeque (Gênesis 14:18-20), Jetro (Êxodo 18) e Jó — "reto, e temente a Deus" (Jó 1:1) — respondem favoravelmente ao pouco que conheciam, antes de qualquer lei ou evangelho.
+      </div>
+    </article>
+
+    <article class="card dark" data-title="04 · Cornélio" data-gauge="70">
+      <span class="num">CASO 04</span>
+      <h3>Cornélio: o caso mais discutido</h3>
+      <span class="subtitle">A fé sincera antes do evangelho explícito</span>
+      <div class="gauge">
+        <div class="gauge-track"><div class="gauge-fill" style="width:70%"></div></div>
+        <div class="gauge-labels"><span>sem luz</span><span>luz plena</span></div>
+      </div>
+      <p>Antes de conhecer Cristo, Cornélio já era descrito como temente a Deus, generoso e um homem de oração constante. Suas orações "subiram para memória diante de Deus" — reconhecimento divino antes do evangelho chegar.</p>
+      <div class="verse">Piedoso, e temente a Deus com toda a sua casa, e que fazia muitas esmolas ao povo, e de contínuo orava a Deus.
+        <span class="ref">ATOS 10:2 — ACF</span>
+      </div>
+      <div class="tension">
+        <span class="eyebrow">A tensão</span>
+        Mesmo assim, Deus enviou um anjo para que Pedro lhe falasse "palavras, pelas quais serás salvo" (Atos 11:14). A resposta à luz geral abriu a porta — mas o evangelho explícito ainda foi enviado.
+      </div>
+    </article>
+
+    <article class="card" data-title="05 · Bebê" data-gauge="0">
+      <span class="num">CASO 05</span>
+      <h3>O bebê de 2 meses</h3>
+      <span class="subtitle">Nenhuma capacidade, logo nenhuma responsabilidade</span>
+      <div class="gauge">
+        <div class="gauge-track"><div class="gauge-fill" style="width:2%"></div></div>
+        <div class="gauge-labels"><span>sem luz</span><span>luz plena</span></div>
+      </div>
+      <p>Aqui o princípio da luz recebida quase não gera debate. Uma criança sem qualquer capacidade cognitiva não pode ser julgada pelo mesmo padrão de quem pode compreender e decidir. É o consenso mais amplo entre as tradições cristãs, calvinistas incluídos.</p>
+      <div class="verse">Porque eu vou a ele, mas ele não voltará para mim.
+        <span class="ref">2 SAMUEL 12:23 — ACF</span>
+      </div>
+      <div class="tension">
+        <span class="eyebrow">Base do raciocínio</span>
+        Davi expressa confiança de reencontrar o filho falecido — usado por analogia para todo aquele que morre antes da idade de responsabilidade moral.
+      </div>
+    </article>
+
+    <article class="card" data-title="06 · Deficiência mental" data-gauge="5">
+      <span class="num">CASO 06</span>
+      <h3>Deficiência mental severa</h3>
+      <span class="subtitle">Incapacidade permanente de compreensão</span>
+      <div class="gauge">
+        <div class="gauge-track"><div class="gauge-fill" style="width:8%"></div></div>
+        <div class="gauge-labels"><span>sem luz</span><span>luz plena</span></div>
+      </div>
+      <p>O mesmo princípio do bebê se aplica aqui: sem capacidade de compreender lei moral, evangelho ou de exercer fé e arrependimento conscientes, a pessoa não pode ser julgada pelos critérios de quem tem essa capacidade.</p>
+      <div class="verse">Aquele, pois, que sabe fazer o bem e não o faz, comete pecado.
+        <span class="ref">TIAGO 4:17 — ACF</span>
+      </div>
+      <div class="tension">
+        <span class="eyebrow">Inferência, não texto direto</span>
+        A Escritura não trata este caso explicitamente — a conclusão vem por analogia ao princípio de responsabilidade ligada à capacidade.
+      </div>
+    </article>
+
+    <article class="card" data-title="07 · Embriaguez" data-gauge="90">
+      <span class="num">CASO 07</span>
+      <h3>Embriaguez no momento da morte</h3>
+      <span class="subtitle">Diferente dos outros: aqui houve escolha</span>
+      <div class="gauge">
+        <div class="gauge-track"><div class="gauge-fill" style="width:90%"></div></div>
+        <div class="gauge-labels"><span>sem luz</span><span>luz plena</span></div>
+      </div>
+      <p>Este caso não é de incapacidade involuntária — é resultado de uma decisão. A Bíblia trata a embriaguez como pecado, não como atenuante. A pergunta se desloca: pode a salvação genuína ser afetada por um pecado no instante final?</p>
+      <div class="verse">E não vos embriagueis com vinho, em que há contribuição para a dissolução.
+        <span class="ref">EFÉSIOS 5:18 — ACF</span>
+      </div>
+      <div class="tension">
+        <span class="eyebrow">Debate teológico à parte</span>
+        Quem defende a perseverança dos santos aponta Filipenses 1:6 — a salvação genuína não se perde no estado final da pessoa.
+      </div>
+    </article>
+
+    <article class="card dark" data-title="08 · Contraponto" data-gauge="null">
+      <span class="num">CASO 08</span>
+      <h3>O contraponto exclusivista</h3>
+      <span class="subtitle">Onde a tese encontra resistência</span>
+      <p>Estabelecer graus de responsabilidade conforme a oportunidade é bíblico e amplamente aceito. O passo mais delicado é afirmar que a resposta sincera à luz geral, por si só, resulta em salvação — não apenas em julgamento mais brando.</p>
+      <div class="verse">Nem há salvação em nenhum outro; porque também debaixo do céu nenhum outro nome há, dado entre os homens, pelo qual devamos ser salvos.
+        <span class="ref">ATOS 4:12 — ACF</span>
+      </div>
+      <div class="tension">
+        <span class="eyebrow">O argumento central</span>
+        Romanos 10:14 pergunta como alguém pode crer sem ouvir — para o exclusivismo, fé salvadora envolve conhecimento explícito de Cristo, não apenas resposta à revelação geral.
+      </div>
+    </article>
+
+    <article class="card" data-title="09 · O caráter de Deus" data-gauge="null">
+      <span class="num">CASO 09</span>
+      <h3>O que permanece certo</h3>
+      <span class="subtitle">A âncora, independente da posição adotada</span>
+      <p>Nenhuma das posições resolve totalmente o mistério. Mas duas verdades sobre o caráter de Deus seguram todo o raciocínio, em qualquer tradição: Ele é absolutamente justo, e Ele genuinamente deseja que ninguém se perca.</p>
+      <div class="verse">Não fará justiça o Juiz de toda a terra?
+        <span class="ref">GÊNESIS 18:25 — ACF</span>
+      </div>
+      <div class="verse">Não deseja que nenhum pereça, senão que todos venham a arrepender-se.
+        <span class="ref">2 PEDRO 3:9 — ACF</span>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<section class="synthesis">
+  <div class="synthesis-grid">
+    <h2>O veredito pertence a Deus. A nós, cabe pregar.</h2>
+    <div class="col">
+      <span class="eyebrow">O que é claro</span>
+      <p>O padrão de julgamento de Deus varia com a oportunidade recebida — isso a Escritura ensina sem ambiguidade. Bebês, incapazes mentais e povos nunca alcançados não respondem pelo mesmo critério de quem ouviu o evangelho e o rejeitou.</p>
+    </div>
+    <div class="col">
+      <span class="eyebrow">O que continua em aberto</span>
+      <p>Se a resposta sincera à luz geral basta para a salvação, ou apenas atenua o julgamento, é um debate que atravessa séculos de teologia séria — e permanece um convite à humildade, não à certeza fácil.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>PALAVRAS DE FÉ — ESTUDO BÍBLICO</span>
+  <span>TEXTO BÍBLICO: VERSÃO ALMEIDA CORRIGIDA FIEL (ACF)</span>
+  <span>PR. JOÃO ALVES · WWW.RADIOMATEUS633.COM</span>
+</footer>
+
+<script>
+  const stack = document.getElementById('stack');
+  const nav = document.getElementById('stackNav');
+  const cards = Array.from(stack.children);
+
+  cards.forEach((card, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = card.dataset.title;
+    btn.addEventListener('click', () => {
+      card.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    });
+    nav.appendChild(btn);
+  });
+
+  const navButtons = Array.from(nav.children);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const idx = cards.indexOf(entry.target);
+      if (entry.isIntersecting && idx !== -1) {
+        navButtons.forEach(b => b.classList.remove('active'));
+        navButtons[idx].classList.add('active');
+      }
+    });
+  }, { root: stack, threshold: 0.6 });
+
+  cards.forEach(card => observer.observe(card));
+  if(navButtons[0]) navButtons[0].classList.add('active');
+</script>
+
+</body>
+</html>
